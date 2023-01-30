@@ -1,7 +1,7 @@
 provider "google" {
 credentials = file("credentials.json")
-  project     = "anttech-373808"
-  region      = "us-west1"
+  project     = "${var.my_gcp_project}"
+  region      = "${var.region}"
 }
 
 #version
@@ -14,7 +14,7 @@ terraform {
   }
   backend "gcs" {
     bucket = "nurdabucket"
-    prefix = "terraform/state"
+     prefix = "terraform/state"
     credentials = "credentials.json"
   }
 }
